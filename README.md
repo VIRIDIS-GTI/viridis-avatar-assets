@@ -13,6 +13,8 @@ steht dort in `AVATAR_ASSETS_DIR`.
 | `neo` | maennlich, kurze schwarze Haare, dunkle Sonnenbrille, schwarzer Mantel | VIRIDIS Dev Bot (`openclaw`) |
 | `andy` | gezeichneter Mann, braunes Haar, gruener Kragen | fuer einen weiteren OpenClaw-Bot vorbereitet |
 
+Beide Saetze enthalten `profile_640.png` und die Kreis-Vorschau.
+
 ## Aufbau eines Satzes
 
 | Datei | Zweck |
