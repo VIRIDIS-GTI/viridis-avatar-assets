@@ -11,7 +11,7 @@ steht dort in `AVATAR_ASSETS_DIR`.
 | Satz | Figur | Verwendet von |
 |---|---|---|
 | `neo` | maennlich, kurze schwarze Haare, dunkle Sonnenbrille, schwarzer Mantel | VIRIDIS Dev Bot (`openclaw`) |
-| `andy` | gezeichneter Pop-Art-Avatar, an Andy Warhol angelehnt | fuer einen weiteren OpenClaw-Bot vorbereitet |
+| `andy` | gezeichneter Pop-Art-Avatar nach Vorlage aus VIR-15 | fuer einen weiteren OpenClaw-Bot vorbereitet |
 
 Beide Saetze enthalten `profile_640.png` und die Kreis-Vorschau.
 

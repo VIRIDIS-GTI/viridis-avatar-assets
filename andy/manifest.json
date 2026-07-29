@@ -1,7 +1,7 @@
 {
   "name": "andy",
-  "version": 1,
-  "created": "2026-07-29T21:20:00",
+  "version": 2,
+  "created": "2026-07-29T21:52:00",
   "canvas": {
     "width": 1024,
     "height": 1024
@@ -15,20 +15,20 @@
   "portrait": "portrait.png",
   "anchors": {
     "eye_left": [
-      412,
-      457
+      389,
+      425
     ],
     "eye_right": [
-      589,
-      457
+      593,
+      425
     ],
     "mouth": [
-      512,
-      631
+      508,
+      620
     ],
     "head_center": [
       512,
-      481.28
+      470
     ]
   },
   "visemes": {
@@ -36,70 +36,70 @@
       "X": {
         "file": "mouth_X.png",
         "offset": [
-          262,
-          568
+          185,
+          537
         ]
       },
       "A": {
         "file": "mouth_A.png",
         "offset": [
-          262,
-          568
+          185,
+          537
         ]
       },
       "B": {
         "file": "mouth_B.png",
         "offset": [
-          262,
-          568
+          185,
+          537
         ]
       },
       "C": {
         "file": "mouth_C.png",
         "offset": [
-          262,
-          568
+          185,
+          537
         ]
       },
       "D": {
         "file": "mouth_D.png",
         "offset": [
-          262,
-          568
+          185,
+          537
         ]
       },
       "E": {
         "file": "mouth_E.png",
         "offset": [
-          262,
-          568
+          185,
+          537
         ]
       },
       "F": {
         "file": "mouth_F.png",
         "offset": [
-          262,
-          568
+          185,
+          537
         ]
       },
       "G": {
         "file": "mouth_G.png",
         "offset": [
-          262,
-          568
+          185,
+          537
         ]
       },
       "H": {
         "file": "mouth_H.png",
         "offset": [
-          262,
-          568
+          185,
+          537
         ]
       }
     },
     "anchor": [
-      512,
-      631
+      508,
+      620
     ],
     "mode": "generative"
   },
@@ -191,6 +191,7 @@
   ],
   "source": {
     "name": "andy",
-    "portrait": "portrait.png"
+    "portrait": "portrait.png",
+    "reference": "Vorlage aus VIR-15 (Paperclip-Anhang)"
   }
 }
