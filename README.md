@@ -11,6 +11,7 @@ steht dort in `AVATAR_ASSETS_DIR`.
 | Satz | Figur | Verwendet von |
 |---|---|---|
 | `neo` | maennlich, kurze schwarze Haare, dunkle Sonnenbrille, schwarzer Mantel | VIRIDIS Dev Bot (`openclaw`) |
+| `andy` | gezeichneter Mann, braunes Haar, gruener Kragen | fuer einen weiteren OpenClaw-Bot vorbereitet |
 
 ## Aufbau eines Satzes
 

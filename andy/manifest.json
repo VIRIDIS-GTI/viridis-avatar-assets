@@ -1,0 +1,196 @@
+{
+  "name": "andy",
+  "version": 1,
+  "created": "2026-07-29T19:59:00",
+  "canvas": {
+    "width": 1024,
+    "height": 1024
+  },
+  "safe_circle": {
+    "cx": 512.0,
+    "cy": 512.0,
+    "r": 512.0
+  },
+  "base": "base.png",
+  "portrait": "portrait.png",
+  "anchors": {
+    "eye_left": [
+      545,
+      450
+    ],
+    "eye_right": [
+      779,
+      450
+    ],
+    "mouth": [
+      520,
+      620
+    ],
+    "head_center": [
+      512,
+      481.28
+    ]
+  },
+  "visemes": {
+    "layers": {
+      "X": {
+        "file": "mouth_X.png",
+        "offset": [
+          189,
+          537
+        ]
+      },
+      "A": {
+        "file": "mouth_A.png",
+        "offset": [
+          189,
+          537
+        ]
+      },
+      "B": {
+        "file": "mouth_B.png",
+        "offset": [
+          189,
+          537
+        ]
+      },
+      "C": {
+        "file": "mouth_C.png",
+        "offset": [
+          189,
+          537
+        ]
+      },
+      "D": {
+        "file": "mouth_D.png",
+        "offset": [
+          189,
+          537
+        ]
+      },
+      "E": {
+        "file": "mouth_E.png",
+        "offset": [
+          189,
+          537
+        ]
+      },
+      "F": {
+        "file": "mouth_F.png",
+        "offset": [
+          189,
+          537
+        ]
+      },
+      "G": {
+        "file": "mouth_G.png",
+        "offset": [
+          189,
+          537
+        ]
+      },
+      "H": {
+        "file": "mouth_H.png",
+        "offset": [
+          189,
+          537
+        ]
+      }
+    },
+    "anchor": [
+      520,
+      620
+    ],
+    "mode": "generative"
+  },
+  "eyes": {
+    "open": {
+      "file": null
+    },
+    "half": {
+      "file": "eyes_half.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "closed": {
+      "file": "eyes_closed.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "wink_left": {
+      "file": "eyes_wink_left.png",
+      "offset": [
+        0,
+        0
+      ]
+    }
+  },
+  "brows": {
+    "neutral": {
+      "file": "brows_neutral.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "happy": {
+      "file": "brows_happy.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "sad": {
+      "file": "brows_sad.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "surprised": {
+      "file": "brows_surprised.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "angry": {
+      "file": "brows_angry.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "thinking": {
+      "file": "brows_thinking.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "playful": {
+      "file": "brows_playful.png",
+      "offset": [
+        0,
+        0
+      ]
+    }
+  },
+  "emotions": [
+    "neutral",
+    "happy",
+    "sad",
+    "surprised",
+    "angry",
+    "thinking",
+    "playful"
+  ],
+  "source": {
+    "name": "andy",
+    "portrait": "andy-portrait.png"
+  }
+}
