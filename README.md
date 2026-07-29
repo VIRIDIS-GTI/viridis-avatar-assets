@@ -23,9 +23,17 @@ steht dort in `AVATAR_ASSETS_DIR`.
 | `mouth_X`, `mouth_A` … `mouth_H` | neun Viseme; `X` ist der geschlossene Mund |
 | `eyes_half`, `eyes_closed`, `eyes_wink_left` | Lidzustaende; offene Augen stecken in `base.png` |
 | `brows_<gefuehl>` | Brauen je Gefuehl: `neutral`, `happy`, `sad`, `surprised`, `angry`, `thinking`, `playful` |
+| `profile_640.png` | Telegram-Profil-/Gruppenbild, 640x640, Kopf mittig im Kreis |
+| `profile_640_kreis-vorschau.png` | Kontrollbild: derselbe Zuschnitt mit rundem Ausschnitt |
 | `README.md` | Besonderheiten des Satzes |
 
 Alle Ebenen sind PNG mit Alphakanal und teilen dieselbe Leinwandgroesse.
+
+**Zu jedem Satz gehoert das Telegram-Bild.** Telegram zeigt Profil- und Gruppenbilder
+rund; vom Quadrat bleibt der einbeschriebene Kreis. `profile_640.png` ist deshalb ein
+Zuschnitt aus `portrait.png` mit dem Kopf in der Kreismitte, 640x640. Die
+Kreis-Vorschau liegt daneben, damit sich der Zuschnitt pruefen laesst, ohne ihn
+hochzuladen. Ein Satz ohne diese beiden Dateien ist unvollstaendig.
 
 ## Einen Satz einbinden
 
