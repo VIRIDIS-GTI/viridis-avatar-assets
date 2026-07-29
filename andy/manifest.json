@@ -1,7 +1,7 @@
 {
   "name": "andy",
   "version": 1,
-  "created": "2026-07-29T19:59:00",
+  "created": "2026-07-29T21:20:00",
   "canvas": {
     "width": 1024,
     "height": 1024
@@ -15,16 +15,16 @@
   "portrait": "portrait.png",
   "anchors": {
     "eye_left": [
-      545,
-      450
+      412,
+      457
     ],
     "eye_right": [
-      779,
-      450
+      589,
+      457
     ],
     "mouth": [
-      520,
-      620
+      512,
+      631
     ],
     "head_center": [
       512,
@@ -36,70 +36,70 @@
       "X": {
         "file": "mouth_X.png",
         "offset": [
-          189,
-          537
+          262,
+          568
         ]
       },
       "A": {
         "file": "mouth_A.png",
         "offset": [
-          189,
-          537
+          262,
+          568
         ]
       },
       "B": {
         "file": "mouth_B.png",
         "offset": [
-          189,
-          537
+          262,
+          568
         ]
       },
       "C": {
         "file": "mouth_C.png",
         "offset": [
-          189,
-          537
+          262,
+          568
         ]
       },
       "D": {
         "file": "mouth_D.png",
         "offset": [
-          189,
-          537
+          262,
+          568
         ]
       },
       "E": {
         "file": "mouth_E.png",
         "offset": [
-          189,
-          537
+          262,
+          568
         ]
       },
       "F": {
         "file": "mouth_F.png",
         "offset": [
-          189,
-          537
+          262,
+          568
         ]
       },
       "G": {
         "file": "mouth_G.png",
         "offset": [
-          189,
-          537
+          262,
+          568
         ]
       },
       "H": {
         "file": "mouth_H.png",
         "offset": [
-          189,
-          537
+          262,
+          568
         ]
       }
     },
     "anchor": [
-      520,
-      620
+      512,
+      631
     ],
     "mode": "generative"
   },
@@ -191,6 +191,6 @@
   ],
   "source": {
     "name": "andy",
-    "portrait": "andy-portrait.png"
+    "portrait": "portrait.png"
   }
 }

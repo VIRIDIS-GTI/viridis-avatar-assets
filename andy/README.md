@@ -1,21 +1,21 @@
 # Avatar-Ebenen: andy
 
-Vollstaendiger Satz fuer den OpenClaw-Avatar-Renderer. Die Vorlage ist eine
-gezeichnete Figur; sie stellt keinen Menschen dar. Alle Animationsebenen und
-Koordinaten stehen in `manifest.json`.
+Originaler, gezeichneter Pop-Art-Avatar, sichtbar an die oeffentliche Bildpersona
+von **Andy Warhol** angelehnt: platinweisses Haar, grosse schwarze Brille und
+schwarzer Rollkragen. Er ist eine Illustration, kein Foto.
 
 | Datei | Zweck |
 |---|---|
-| `portrait.png` | Quellportraet, 1024x1024, wird nicht gerendert |
-| `base.png` | Gesicht mit ausgeraeumtem Mundbereich |
-| `mouth_X.png` … `mouth_H.png` | neun Viseme, 657x188, Versatz `[189, 537]` |
-| `eyes_half/closed/wink_left.png` | Lidzustaende; offene Augen stecken in `base.png` |
-| `brows_<gefuehl>.png` | Brauen je Gefuehl |
+| `portrait.png` | gezeichnetes Quellportraet, 1024x1024; wird nicht gerendert |
+| `base.png` | Gesicht mit bereinigtem Mundbereich |
+| `mouth_X.png` … `mouth_H.png` | neun Viseme, 657x188 px |
+| `eyes_half/closed/wink_left.png` | Lidzustaende |
+| `brows_<gefuehl>.png` | sieben Brauenebenen |
 | `profile_640.png` | Telegram-Profil-/Gruppenbild, 640x640 |
-| `profile_640_kreis-vorschau.png` | Kontrollbild mit rundem Ausschnitt |
-| `static-render-check.png` | Standbild aus dem Renderer-Test |
+| `profile_640_kreis-vorschau.png` | Kreis-Kontrollbild fuer Telegram |
+| `static-render-check.png` | Standbild des Renderer-Tests |
 
-Anker: Augen `[545, 450]` und `[779, 450]`, Mund `[520, 620]`.
+Manifest-Anker: Augen `[412,457]` / `[589,457]`, Mund `[512,631]`.
 
-Geprueft: 252 Ebenen-Kombinationen im Renderer, dazu ein Testvideo
-(H.264/AAC, 512x512, 1,2 s).
+Geprueft: alle 252 Ebenenkombinationen und ein H.264/AAC-Testvideo (512x512,
+1,2 s). Im Kreis bleiben Scheitel und Kinn vollstaendig sichtbar.
