@@ -1,0 +1,196 @@
+{
+  "name": "mia",
+  "version": 2,
+  "created": "2026-07-30T00:24:29",
+  "canvas": {
+    "width": 1024,
+    "height": 1024
+  },
+  "safe_circle": {
+    "cx": 512.0,
+    "cy": 512.0,
+    "r": 512.0
+  },
+  "base": "base.png",
+  "portrait": "portrait.png",
+  "anchors": {
+    "eye_left": [
+      459.0,
+      370.0
+    ],
+    "eye_right": [
+      626.0,
+      370.0
+    ],
+    "mouth": [
+      537.0,
+      609.5
+    ],
+    "head_center": [
+      512.0,
+      480.0
+    ]
+  },
+  "visemes": {
+    "layers": {
+      "X": {
+        "file": "mouth_X.png",
+        "offset": [
+          136,
+          447
+        ]
+      },
+      "A": {
+        "file": "mouth_A.png",
+        "offset": [
+          136,
+          447
+        ]
+      },
+      "B": {
+        "file": "mouth_B.png",
+        "offset": [
+          136,
+          447
+        ]
+      },
+      "C": {
+        "file": "mouth_C.png",
+        "offset": [
+          136,
+          447
+        ]
+      },
+      "D": {
+        "file": "mouth_D.png",
+        "offset": [
+          136,
+          447
+        ]
+      },
+      "E": {
+        "file": "mouth_E.png",
+        "offset": [
+          136,
+          447
+        ]
+      },
+      "F": {
+        "file": "mouth_F.png",
+        "offset": [
+          136,
+          447
+        ]
+      },
+      "G": {
+        "file": "mouth_G.png",
+        "offset": [
+          136,
+          447
+        ]
+      },
+      "H": {
+        "file": "mouth_H.png",
+        "offset": [
+          136,
+          447
+        ]
+      }
+    },
+    "anchor": [
+      537.0,
+      609.5
+    ],
+    "mode": "generative"
+  },
+  "eyes": {
+    "open": {
+      "file": null
+    },
+    "half": {
+      "file": "eyes_half.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "closed": {
+      "file": "eyes_closed.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "wink_left": {
+      "file": "eyes_wink_left.png",
+      "offset": [
+        0,
+        0
+      ]
+    }
+  },
+  "brows": {
+    "neutral": {
+      "file": "brows_neutral.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "happy": {
+      "file": "brows_happy.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "sad": {
+      "file": "brows_sad.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "surprised": {
+      "file": "brows_surprised.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "angry": {
+      "file": "brows_angry.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "thinking": {
+      "file": "brows_thinking.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "playful": {
+      "file": "brows_playful.png",
+      "offset": [
+        0,
+        0
+      ]
+    }
+  },
+  "emotions": [
+    "neutral",
+    "happy",
+    "sad",
+    "surprised",
+    "angry",
+    "thinking",
+    "playful"
+  ],
+  "source": {
+    "name": "mia",
+    "portrait": "/home/node/.openclaw/avatar/mia-src/mia-source.jpg"
+  }
+}
