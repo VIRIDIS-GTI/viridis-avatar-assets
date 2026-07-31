@@ -1,7 +1,7 @@
 {
   "name": "otto",
   "version": 1,
-  "created": "2026-07-31T14:32:08+00:00",
+  "created": "2026-07-31T16:08:06+00:00",
   "canvas": {
     "width": 1024,
     "height": 1024
@@ -15,20 +15,20 @@
   "portrait": "portrait.png",
   "anchors": {
     "eye_left": [
-      438,
-      262
+      397,
+      519
     ],
     "eye_right": [
-      534,
-      262
+      591,
+      519
     ],
     "mouth": [
-      487,
-      352
+      512,
+      674
     ],
     "head_center": [
       512,
-      300
+      520
     ]
   },
   "visemes": {
@@ -36,70 +36,70 @@
       "X": {
         "file": "mouth_X.png",
         "offset": [
-          385,
-          310
+          350,
+          620
         ]
       },
       "A": {
         "file": "mouth_A.png",
         "offset": [
-          385,
-          310
+          350,
+          620
         ]
       },
       "B": {
         "file": "mouth_B.png",
         "offset": [
-          385,
-          310
+          350,
+          620
         ]
       },
       "C": {
         "file": "mouth_C.png",
         "offset": [
-          385,
-          310
+          350,
+          620
         ]
       },
       "D": {
         "file": "mouth_D.png",
         "offset": [
-          385,
-          310
+          350,
+          620
         ]
       },
       "E": {
         "file": "mouth_E.png",
         "offset": [
-          385,
-          310
+          350,
+          620
         ]
       },
       "F": {
         "file": "mouth_F.png",
         "offset": [
-          385,
-          310
+          350,
+          620
         ]
       },
       "G": {
         "file": "mouth_G.png",
         "offset": [
-          385,
-          310
+          350,
+          620
         ]
       },
       "H": {
         "file": "mouth_H.png",
         "offset": [
-          385,
-          310
+          350,
+          620
         ]
       }
     },
     "anchor": [
-      487,
-      352
+      512,
+      674
     ],
     "mode": "generative"
   },

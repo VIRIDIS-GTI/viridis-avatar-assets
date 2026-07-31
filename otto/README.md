@@ -4,4 +4,4 @@ Originaler, gezeichneter Bauleiter-Avatar für einen künftigen OpenClaw-Bot. De
 
 Enthalten sind neun Viseme, vier Lidzustände, sieben Brauen-/Gefühlslagen sowie das Telegram-Profilbild und dessen Kreisvorschau.
 
-Anker: Augen `[438,262]` / `[534,262]`, Mund `[487,352]`. Mundebenen: `205×130 px` bei Offset `[385,310]`.
+Anker: Augen `[397,519]` / `[591,519]`, Mund `[512,674]`. Mundebenen: `325×135 px` bei Offset `[350,620]`.
