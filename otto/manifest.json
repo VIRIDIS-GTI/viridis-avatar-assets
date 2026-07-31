@@ -1,0 +1,197 @@
+{
+  "name": "otto",
+  "version": 1,
+  "created": "2026-07-31T14:32:08+00:00",
+  "canvas": {
+    "width": 1024,
+    "height": 1024
+  },
+  "safe_circle": {
+    "cx": 512.0,
+    "cy": 512.0,
+    "r": 512.0
+  },
+  "base": "base.png",
+  "portrait": "portrait.png",
+  "anchors": {
+    "eye_left": [
+      438,
+      262
+    ],
+    "eye_right": [
+      534,
+      262
+    ],
+    "mouth": [
+      487,
+      352
+    ],
+    "head_center": [
+      512,
+      300
+    ]
+  },
+  "visemes": {
+    "layers": {
+      "X": {
+        "file": "mouth_X.png",
+        "offset": [
+          385,
+          310
+        ]
+      },
+      "A": {
+        "file": "mouth_A.png",
+        "offset": [
+          385,
+          310
+        ]
+      },
+      "B": {
+        "file": "mouth_B.png",
+        "offset": [
+          385,
+          310
+        ]
+      },
+      "C": {
+        "file": "mouth_C.png",
+        "offset": [
+          385,
+          310
+        ]
+      },
+      "D": {
+        "file": "mouth_D.png",
+        "offset": [
+          385,
+          310
+        ]
+      },
+      "E": {
+        "file": "mouth_E.png",
+        "offset": [
+          385,
+          310
+        ]
+      },
+      "F": {
+        "file": "mouth_F.png",
+        "offset": [
+          385,
+          310
+        ]
+      },
+      "G": {
+        "file": "mouth_G.png",
+        "offset": [
+          385,
+          310
+        ]
+      },
+      "H": {
+        "file": "mouth_H.png",
+        "offset": [
+          385,
+          310
+        ]
+      }
+    },
+    "anchor": [
+      487,
+      352
+    ],
+    "mode": "generative"
+  },
+  "eyes": {
+    "open": {
+      "file": null
+    },
+    "half": {
+      "file": "eyes_half.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "closed": {
+      "file": "eyes_closed.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "wink_left": {
+      "file": "eyes_wink_left.png",
+      "offset": [
+        0,
+        0
+      ]
+    }
+  },
+  "brows": {
+    "neutral": {
+      "file": "brows_neutral.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "happy": {
+      "file": "brows_happy.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "sad": {
+      "file": "brows_sad.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "surprised": {
+      "file": "brows_surprised.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "angry": {
+      "file": "brows_angry.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "thinking": {
+      "file": "brows_thinking.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "playful": {
+      "file": "brows_playful.png",
+      "offset": [
+        0,
+        0
+      ]
+    }
+  },
+  "emotions": [
+    "neutral",
+    "happy",
+    "sad",
+    "surprised",
+    "angry",
+    "thinking",
+    "playful"
+  ],
+  "source": {
+    "name": "otto",
+    "portrait": "portrait.png",
+    "reference": "Originaler Bauarbeiter-Avatar, inspiriert vom Arbeitskontext; keine Nachbildung einer bestehenden Figur."
+  }
+}

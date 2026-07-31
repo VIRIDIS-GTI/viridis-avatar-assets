@@ -13,6 +13,7 @@ steht dort in `AVATAR_ASSETS_DIR`.
 | `neo` | maennlich, kurze schwarze Haare, dunkle Sonnenbrille, schwarzer Mantel | VIRIDIS Dev Bot (`openclaw`) |
 | `andy` | gezeichneter Pop-Art-Avatar nach Vorlage aus VIR-15 | fuer einen weiteren OpenClaw-Bot vorbereitet |
 | `mia` | gezeichneter Avatar mit langen dunklen Haaren und durchsichtiger schwarzer Brille | gebaut, noch nicht produktiv aktiviert |
+| `otto` | originaler gezeichneter Bauleiter mit gelbem Helm und Arbeitskleidung | für einen weiteren OpenClaw-Bot vorbereitet |
 
 Beide Saetze enthalten `profile_640.png` und die Kreis-Vorschau.
 
