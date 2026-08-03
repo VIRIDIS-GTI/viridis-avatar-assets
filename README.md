@@ -1,71 +1,91 @@
-# viridis-avatar-assets
+# VIRIDIS Avatar Assets
 
-Avatar-Ebenensaetze fuer die OpenClaw-Bots der VIRIDIS Green-Tech Investment AG.
+Versionierte Ebenensätze für die gezeichneten Video-Avatare der VIRIDIS Green-Tech
+Investment AG. Der Renderer liest ausschließlich `manifest.json`; ein Satz ist damit
+vollständig austauschbar, ohne den Renderer zu ändern.
 
-Jeder Ordner ist ein vollstaendiger Satz, den der Avatar-Renderer direkt laden kann.
-Die Bots ziehen ihn beim Start per initContainer in ihr Datenverzeichnis; der Pfad
-steht dort in `AVATAR_ASSETS_DIR`.
+## Sätze und Versionen
 
-## Saetze
+| Satz | Version | Öffentlicher Bundle-Pfad nach aktiviertem Pages-Deploy |
+|---|---:|---|
+| `neo` | 1 | `https://VIRIDIS-GTI.github.io/viridis-avatar-assets/neo/v1/neo-v1.tar.gz` |
+| `andy` | 2 | `https://VIRIDIS-GTI.github.io/viridis-avatar-assets/andy/v2/andy-v2.tar.gz` |
+| `mia` | 2 | `https://VIRIDIS-GTI.github.io/viridis-avatar-assets/mia/v2/mia-v2.tar.gz` |
+| `otto` | 1 | `https://VIRIDIS-GTI.github.io/viridis-avatar-assets/otto/v1/otto-v1.tar.gz` |
 
-| Satz | Figur | Verwendet von |
-|---|---|---|
-| `neo` | maennlich, kurze schwarze Haare, dunkle Sonnenbrille, schwarzer Mantel | VIRIDIS Dev Bot (`openclaw`) |
-| `andy` | gezeichneter Pop-Art-Avatar nach Vorlage aus VIR-15 | fuer einen weiteren OpenClaw-Bot vorbereitet |
-| `mia` | gezeichneter Avatar mit langen dunklen Haaren und durchsichtiger schwarzer Brille | gebaut, noch nicht produktiv aktiviert |
-| `otto` | originaler gezeichneter Bauleiter mit gelbem Helm und Arbeitskleidung | für einen weiteren OpenClaw-Bot vorbereitet |
-| `otto` | originaler gezeichneter Bauleiter mit gelbem Helm und Arbeitskleidung | für einen weiteren OpenClaw-Bot vorbereitet |
-| `otto` | originaler gezeichneter Bauleiter mit gelbem Helm und Arbeitskleidung | für einen weiteren OpenClaw-Bot vorbereitet |
+Die URLs sind der feste Vertragsname der GitHub-Pages-Veröffentlichung. Sie werden
+erst erreichbar, wenn GitHub Pages für dieses Repository aktiviert ist. Neben jedem
+Archiv veröffentlicht die Action eine Datei `<bundle>.sha256` sowie `index.json`.
 
-Beide Saetze enthalten `profile_640.png` und die Kreis-Vorschau.
+**Versionskonvention:** `manifest.version` ist eine positive Ganzzahl je Satz. Eine
+Änderung an gerenderten Ebenen oder Manifest-Verweisen erhöht sie. Der Pfad enthält
+immer exakt `v<manifest.version>`; ältere Versionen bleiben als Referenz URLs stabil.
 
 ## Aufbau eines Satzes
 
 | Datei | Zweck |
 |---|---|
-| `manifest.json` | Leinwandgroesse, Anker, Versaetze — der Renderer liest **nur** diese Datei |
-| `base.png` | Gesicht ohne Mund; der Mundbereich ist ausgeraeumt |
-| `portrait.png` | Vorlage, wird nicht gerendert |
-| `mouth_X`, `mouth_A` … `mouth_H` | neun Viseme; `X` ist der geschlossene Mund |
-| `eyes_half`, `eyes_closed`, `eyes_wink_left` | Lidzustaende; offene Augen stecken in `base.png` |
-| `brows_<gefuehl>` | Brauen je Gefuehl: `neutral`, `happy`, `sad`, `surprised`, `angry`, `thinking`, `playful` |
-| `profile_640.png` | Telegram-Profil-/Gruppenbild, 640x640, Kopf mittig im Kreis |
-| `profile_640_kreis-vorschau.png` | Kontrollbild: derselbe Zuschnitt mit rundem Ausschnitt |
-| `README.md` | Besonderheiten des Satzes |
+| `manifest.json` | Leinwand, Anker, Layer-Verweise — alleinige Renderer-Schnittstelle |
+| `base.png` | Gesicht ohne animierten Mund |
+| `portrait.png` | gezeichnete Vorlage, wird nicht gerendert |
+| `mouth_X.png` bis `mouth_H.png` | neun Preston-Blair-Viseme |
+| `eyes_half/closed/wink_left.png` | zusätzliche Lid-Zustände |
+| `brows_<emotion>.png` | Brauen für sieben Emotionen |
+| `profile_640.png` | Telegram-Profilbild, Kopf im Kreismittelpunkt |
+| `profile_640_kreis-vorschau.png` | Prüfung des runden Telegram-Zuschnitts |
 
-Alle Ebenen sind PNG mit Alphakanal und teilen dieselbe Leinwandgroesse.
+PNG-Layer haben eine gemeinsame Leinwand und einen Alphakanal. Ein Satz ohne
+`profile_640.png` oder Kreisvorschau ist unvollständig.
 
-**Zu jedem Satz gehoert das Telegram-Bild.** Telegram zeigt Profil- und Gruppenbilder
-rund; vom Quadrat bleibt der einbeschriebene Kreis. `profile_640.png` ist deshalb ein
-Zuschnitt aus `portrait.png` mit dem Kopf in der Kreismitte, 640x640. Die
-Kreis-Vorschau liegt daneben, damit sich der Zuschnitt pruefen laesst, ohne ihn
-hochzuladen. Ein Satz ohne diese beiden Dateien ist unvollstaendig.
+## Reproduzierbar validieren und bündeln
 
-## Einen Satz einbinden
-
-Der initContainer klont dieses Repo flach und kopiert einen Ordner:
+Die komplette Build-/Bundle-Logik liegt absichtlich in diesem Repository:
 
 ```sh
-git clone --depth 1 \
-  "https://x-access-token:${GITHUB_CR_TOKEN}@github.com/VIRIDIS-GTI/viridis-avatar-assets.git" /src
-cp -a /src/neo /out/neo
+python3 scripts/build_bundles.py --output dist
 ```
 
-Ein Sparse-Checkout wie beim Infrastruktur-Repo ist hier nicht noetig — das Repo
-enthaelt nichts anderes.
+Der Lauf validiert Manifest, alle Pflichtlayer und Manifest-Verweise. Er erzeugt pro
+Satz ein gzip-komprimiertes TAR inklusive SHA-256 und einen Pages-Index unter
+`dist/pages/`. Für einen Einzeltest: `--avatar mia`.
 
-## Warum ein eigenes Repo
+Die GitHub Action `.github/workflows/deploy-pages.yml` führt exakt diesen Befehl bei
+Push nach `main` aus, lädt das Ergebnis als Pages-Artefakt hoch und deployt es nach
+GitHub Pages. Sie benötigt die Standardberechtigungen `pages: write` und `id-token:
+write`; keine Registry- oder privaten Deploy-Schlüssel.
 
-Die Saetze lagen zuerst im `infrastructure-monorepo` unter
-`hetzner/k8s/apps/avatar-assets/`. Sie stehen dort weiterhin und sind der Stand, aus
-dem dieses Repo entstanden ist.
+## Verwendung im Container
 
-Getrennt wurden sie, weil jeder weitere Bot sonst Lesezugriff auf die gesamte
-Infrastruktur braucht, nur um sein Gesicht zu bekommen. Ein eigenes Repo laesst sich
-einzeln freigeben.
+`openclaw-base` verwendet `AVATAR_BUNDLE_URL` beim ersten Containerstart sicher und
+atomar. Dazu gehören HTTPS-Zwang, Retry/Timeout, optionaler SHA-256-Vergleich,
+Archiv-Pfadprüfung und Manifest-Validierung. Beispiel:
+
+```yaml
+- name: AVATAR_ASSETS_DIR
+  value: /home/node/.openclaw/avatar/mia
+- name: AVATAR_BUNDLE_URL
+  value: https://VIRIDIS-GTI.github.io/viridis-avatar-assets/mia/v2/mia-v2.tar.gz
+- name: AVATAR_BUNDLE_SHA256
+  value: <Wert aus mia-v2.tar.gz.sha256>
+```
+
+Ohne `AVATAR_BUNDLE_URL` bleibt der bestehende InitContainer-/Git-Mechanismus
+unverändert. Infrastruktur-Manifeste sollen künftig nur diese drei Werte je Bot
+konfigurieren, nicht mehr Repo-Klone oder avatar-spezifische InitContainer enthalten.
+
+## Avatar erzeugen oder ändern
+
+Die Generatorlogik stammt aus `openclaw-base` (`scripts/build_avatar.py` und
+`Dockerfile.avatar-build`). Sie ist dort weiterhin das Werkzeug für den einmaligen
+Aufbau aus einer Vorlage. Danach wird der fertige Satz hier committed, validiert und
+als Bundle veröffentlicht. Der Renderer selbst bleibt bei
+`/home/node/.openclaw/avatar/avatar_engine.py`.
+
+Vor einer Änderung alle 252 Kombinationen aus 4 Lid-Zuständen, 7 Emotionen und 9
+Visemen rendern und ein Testvideo erzeugen. Das Telegram-Profilbild und seine
+Kreisvorschau sind zwingender Teil jeder Satz-Änderung.
 
 ## Datenschutz
 
-Manche Saetze entstehen aus dem Portraet einer realen Person. Das Ergebnis ist
-erkennbar eine Zeichnung und wird nie als Mensch ausgegeben. Vorlagenbilder gehoeren
-nicht in dieses Repo — nur die fertigen Ebenen.
+Die Avatare sind Zeichnungen, keine Personen. Quellporträts gehören nicht in dieses
+Repository. Nur die fertigen, für die Animation benötigten Ebenen werden versioniert.
