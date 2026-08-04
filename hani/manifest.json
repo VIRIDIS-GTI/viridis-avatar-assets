@@ -1,0 +1,196 @@
+{
+  "name": "hani",
+  "version": 1,
+  "created": "2026-07-29T04:01:20",
+  "canvas": {
+    "width": 1024,
+    "height": 1024
+  },
+  "safe_circle": {
+    "cx": 512.0,
+    "cy": 512.0,
+    "r": 512.0
+  },
+  "base": "base.png",
+  "portrait": "portrait.png",
+  "anchors": {
+    "eye_left": [
+      422.27023696899414,
+      545.0627670288086
+    ],
+    "eye_right": [
+      602.0896301269531,
+      544.619010925293
+    ],
+    "mouth": [
+      511.9094528198242,
+      722.2548706054688
+    ],
+    "head_center": [
+      512.0,
+      481.28
+    ]
+  },
+  "visemes": {
+    "layers": {
+      "X": {
+        "file": "mouth_X.png",
+        "offset": [
+          189,
+          647
+        ]
+      },
+      "A": {
+        "file": "mouth_A.png",
+        "offset": [
+          189,
+          647
+        ]
+      },
+      "B": {
+        "file": "mouth_B.png",
+        "offset": [
+          189,
+          647
+        ]
+      },
+      "C": {
+        "file": "mouth_C.png",
+        "offset": [
+          189,
+          647
+        ]
+      },
+      "D": {
+        "file": "mouth_D.png",
+        "offset": [
+          189,
+          647
+        ]
+      },
+      "E": {
+        "file": "mouth_E.png",
+        "offset": [
+          189,
+          647
+        ]
+      },
+      "F": {
+        "file": "mouth_F.png",
+        "offset": [
+          189,
+          647
+        ]
+      },
+      "G": {
+        "file": "mouth_G.png",
+        "offset": [
+          189,
+          647
+        ]
+      },
+      "H": {
+        "file": "mouth_H.png",
+        "offset": [
+          189,
+          647
+        ]
+      }
+    },
+    "anchor": [
+      511.9094528198242,
+      722.2548706054688
+    ],
+    "mode": "generative"
+  },
+  "eyes": {
+    "open": {
+      "file": null
+    },
+    "half": {
+      "file": "eyes_half.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "closed": {
+      "file": "eyes_closed.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "wink_left": {
+      "file": "eyes_wink_left.png",
+      "offset": [
+        0,
+        0
+      ]
+    }
+  },
+  "brows": {
+    "neutral": {
+      "file": "brows_neutral.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "happy": {
+      "file": "brows_happy.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "sad": {
+      "file": "brows_sad.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "surprised": {
+      "file": "brows_surprised.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "angry": {
+      "file": "brows_angry.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "thinking": {
+      "file": "brows_thinking.png",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "playful": {
+      "file": "brows_playful.png",
+      "offset": [
+        0,
+        0
+      ]
+    }
+  },
+  "emotions": [
+    "neutral",
+    "happy",
+    "sad",
+    "surprised",
+    "angry",
+    "thinking",
+    "playful"
+  ],
+  "source": {
+    "name": "hani",
+    "portrait": "hani/portrait.png"
+  }
+}
