@@ -1,0 +1,60 @@
+# =====================================================================================
+# openclaw-base-avatar-build — das Werkzeug zum Erzeugen eines Avatar-Rigs.
+#
+#   make avatar PHOTO=… NAME=…
+#
+# Bewusst ein EIGENES Image und nicht Teil des Laufzeit-Images: mediapipe und OpenCV
+# wiegen zusammen ueber ein Gigabyte, werden aber nur beim Aufbereiten gebraucht —
+# einmal je Avatar, nicht im Betrieb. Ein Gateway-Pod, der sie mitschleppt, zahlt bei
+# jedem Neustart und jedem Knotenwechsel dafuer.
+#
+# Deshalb steht hier FROM openclaw-base: Pillow, numpy, ffmpeg und Rhubarb liegen
+# schon drin, es kommt nur das Sehen dazu.
+# =====================================================================================
+ARG BASE_IMAGE=ghcr.io/viridis-gti/openclaw-base
+ARG BASE_TAG=latest
+FROM ${BASE_IMAGE}:${BASE_TAG}
+
+USER root
+
+# opencv-python-headless statt opencv-python: die volle Fassung zieht GTK, X11 und
+# GStreamer nach, und nichts davon hat in einem Container ohne Bildschirm etwas
+# verloren.
+RUN /opt/venv/bin/pip install --no-cache-dir \
+      opencv-python-headless \
+      mediapipe \
+      requests
+
+# Das Landmark-Modell wird eingebacken statt zur Laufzeit geholt: der Bau ist damit die
+# einzige Stelle, die Netz braucht.
+#
+# ⚠️ mediapipe 1.0 hat die alte `mp.solutions`-API ENTFERNT. Der Weg ist jetzt
+# mediapipe.tasks mit einem .task-Modell — dieselben 478 Landmarks, andere Aufrufe.
+# Wer hier auf eine Anleitung mit `mp.solutions.face_mesh` stoesst: die ist veraltet.
+ARG FACE_MODEL_URL=https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task
+RUN mkdir -p /opt/avatar && \
+    curl -fsSL -o /opt/avatar/face_landmarker.task "${FACE_MODEL_URL}" && \
+    /opt/venv/bin/python3 -c "\
+import numpy as np, mediapipe as mp;\
+from mediapipe.tasks import python as t;\
+from mediapipe.tasks.python import vision as v;\
+lm = v.FaceLandmarker.create_from_options(v.FaceLandmarkerOptions(\
+    base_options=t.BaseOptions(model_asset_path='/opt/avatar/face_landmarker.task'),\
+    running_mode=v.RunningMode.IMAGE, num_faces=1));\
+lm.detect(mp.Image(image_format=mp.ImageFormat.SRGB, data=np.zeros((64,64,3),dtype='uint8')));\
+lm.close();\
+print('FaceLandmarker geladen')"
+ENV MEDIAPIPE_FACE_MODEL=/opt/avatar/face_landmarker.task
+
+COPY --chown=1000:1000 scripts/build_avatar.py /opt/avatar/build_avatar.py
+
+USER node
+WORKDIR /work
+
+# Kein tini und kein Gateway: dieses Image ist ein Kommando, kein Dienst.
+ENTRYPOINT ["python3", "/opt/avatar/build_avatar.py"]
+CMD ["--help"]
+
+LABEL org.opencontainers.image.title="openclaw-base-avatar-build" \
+      org.opencontainers.image.description="Erzeugt aus einem Personenfoto ein Avatar-Rig (Comic-Portraet, Viseme, Augen, Brauen)" \
+      org.opencontainers.image.source="https://github.com/VIRIDIS-GTI/openclaw-base"

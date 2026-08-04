@@ -101,11 +101,30 @@ Archiv ausgeschlossen.
 
 ## Avatar erzeugen oder ändern
 
-Die Generatorlogik stammt aus `openclaw-base` (`scripts/build_avatar.py` und
-`Dockerfile.avatar-build`). Sie ist dort weiterhin das Werkzeug für den einmaligen
-Aufbau aus einer Vorlage. Danach wird der fertige Satz hier committed, validiert und
-als Bundle veröffentlicht. Der Renderer selbst bleibt bei
-`/home/node/.openclaw/avatar/avatar_engine.py`.
+Die komplette Generierungs- und Renderlogik liegt seit VIR-190 **in diesem
+Repository** unter `tools/`. `openclaw-base` behält davon nur noch den
+Laufzeit-Startpfad; es ist nicht mehr die Quelle des Generators.
+
+| Datei | Zweck |
+|---|---|
+| `tools/build_avatar.py` | Generator: aus einer Vorlage einen vollständigen Ebenensatz samt `manifest.json` bauen |
+| `tools/avatar_engine.py` | Renderer: Ebenen + Audio + Cues zum Video zusammensetzen |
+| `tools/Dockerfile.avatar-build` | Builder-Image mit mediapipe/OpenCV; bewusst getrennt vom Laufzeit-Image |
+| `tools/avatar-bundle-init.sh` | Referenzfassung des Startpfads, der `AVATAR_BUNDLE_URL` auswertet |
+| `docs/AVATAR.md` | Verfahren, Begründungen und Fallstricke im Detail |
+
+Der Generator braucht mediapipe und OpenCV und läuft deshalb im Builder-Image, nicht
+im Laufzeit-Container:
+
+```sh
+docker build -f tools/Dockerfile.avatar-build -t avatar-build .
+docker run --rm -v "$PWD":/out avatar-build --photo /photo/vorlage.jpg --name mia --out /out
+```
+
+Danach wird der fertige Satz hier committed; der Pages-Workflow validiert ihn und
+veröffentlicht das Bundle. Im Betrieb liegt der Renderer weiterhin unter
+`/home/node/.openclaw/avatar/avatar_engine.py` — ausgeliefert über die ConfigMap
+`openclaw-scripts`, deren Inhalt aus `tools/avatar_engine.py` stammt.
 
 Vor einer Änderung alle 252 Kombinationen aus 4 Lid-Zuständen, 7 Emotionen und 9
 Visemen rendern und ein Testvideo erzeugen. Das Telegram-Profilbild und seine
