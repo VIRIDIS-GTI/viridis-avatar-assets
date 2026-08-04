@@ -9,10 +9,10 @@ vollständig austauschbar, ohne den Renderer zu ändern.
 | Satz | Gender | Version | Öffentliche Bundle-URL | SHA-256 |
 |---|---|---:|---|---|
 | `andy` | `male` | 2 | `https://viridis-gti.github.io/viridis-avatar-assets/andy/v2/andy-v2.tar.gz` | `408abd5ad9d10a67a7a3922825f6338c36b6d4be4e63b5ecab1362cb9e743491` |
+| `bob` | `male` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/bob/v1/bob-v1.tar.gz` | `537c7c7beaff21053373bcfe49ee960bb62b03557495b9205cbc7fada0c5c50b` |
 | `hani` | `female` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/hani/v1/hani-v1.tar.gz` | `581d2a7df242c3c7fe5cd49d9fd4d0ce278d61852f13bdc8a2931be6a71cf9de` |
 | `mia` | `female` | 2 | `https://viridis-gti.github.io/viridis-avatar-assets/mia/v2/mia-v2.tar.gz` | `f652cae2c1a18b0693cbfa8becb050b5374b81b3f8437726f21c3ab669cba73b` |
 | `neo` | `male` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/neo/v1/neo-v1.tar.gz` | `4eb2ac2d4c1873712c784815a6ba0801426611beec02d1192d452e338afec1c8` |
-| `otto` | `male` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/otto/v1/otto-v1.tar.gz` | `6e32ab48f3d2f2c6d0ab4128a589f13e4132d0d64d098025a0d33d8a3fdc8cd6` |
 
 Die URLs sind live; GitHub Pages ist für dieses Repository aktiv (Quelle: GitHub
 Actions). Neben jedem Archiv liegt `<bundle>.sha256`, dazu ein Gesamtindex:
@@ -27,25 +27,13 @@ Die Prüfsummen oben stammen aus diesem Index und sind identisch mit einem lokal
 **Gender-Feld:** Jeder Satz enthält in `manifest.json` das maschinenlesbare Feld
 `gender` mit `female` oder `male`. Der Pages-Index übernimmt es unverändert als
 `avatars[].gender`; der Builder lehnt Sätze ohne gültigen Wert ab. Aktuell sind
-`mia` und `hani` `female`, `andy`, `neo` und `otto` `male`.
-
-**Gender-Feld:** Jeder Satz enthält in `manifest.json` das maschinenlesbare Feld
-`gender` mit `female` oder `male`. Der Pages-Index übernimmt es unverändert als
-`avatars[].gender`; der Builder lehnt Sätze ohne gültigen Wert ab. Aktuell sind
-`mia` und `hani` `female`, `andy`, `neo` und `otto` `male`.
-
-**Gender-Feld:** Jeder Satz enthält in `manifest.json` das maschinenlesbare Feld
-`gender` mit `female` oder `male`. Der Pages-Index übernimmt es unverändert als
-`avatars[].gender`; der Builder lehnt Sätze ohne gültigen Wert ab. Aktuell sind
-`mia` und `hani` `female`, `andy`, `neo` und `otto` `male`. Reine Metadaten wie
+`mia` und `hani` `female`, `andy`, `neo` und `bob` `male`. Reine Metadaten wie
 `gender` sind keine gerenderte Ebene und erhöhen die Version nicht, ändern aber
 den Manifestinhalt und damit die Bundle-Prüfsumme.
 
 **Versionskonvention:** `manifest.version` ist eine positive Ganzzahl je Satz. Eine
 Änderung an gerenderten Ebenen oder Manifest-Verweisen erhöht sie. Der Pfad enthält
 immer exakt `v<manifest.version>`; ältere Versionen bleiben als Referenz URLs stabil.
-Reine Metadaten wie `gender` sind keine gerenderte Ebene und erhöhen die Version
-nicht; sie ändern aber den Manifestinhalt und damit die Bundle-Prüfsumme.
 
 ## Aufbau eines Satzes
 

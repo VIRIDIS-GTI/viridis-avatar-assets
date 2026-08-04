@@ -1,5 +1,5 @@
 {
-  "name": "otto",
+  "name": "bob",
   "version": 1,
   "created": "2026-07-31T16:08:06+00:00",
   "canvas": {
@@ -190,7 +190,7 @@
     "playful"
   ],
   "source": {
-    "name": "otto",
+    "name": "bob",
     "portrait": "portrait.png",
     "reference": "Originaler Bauarbeiter-Avatar, inspiriert vom Arbeitskontext; keine Nachbildung einer bestehenden Figur."
   },

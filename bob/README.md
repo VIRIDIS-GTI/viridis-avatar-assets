@@ -1,4 +1,4 @@
-# Avatar-Ebenen: otto
+# Avatar-Ebenen: bob
 
 Originaler, gezeichneter Bauleiter-Avatar für einen künftigen OpenClaw-Bot. Der Satz nimmt nur den gewünschten Bauarbeiter-Kontext auf und bildet keine bestehende Figur nach.
 
