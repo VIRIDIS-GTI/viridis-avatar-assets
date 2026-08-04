@@ -8,6 +8,7 @@ vollständig austauschbar, ohne den Renderer zu ändern.
 
 | Satz | Version | Öffentliche Bundle-URL | SHA-256 |
 |---|---:|---|---|
+| `hani` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/hani/v1/hani-v1.tar.gz` | `2885ae0eda94dc688c36155fe720a3ec5f825581c7508fc50c959cf4db19ee77` |
 | `neo` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/neo/v1/neo-v1.tar.gz` | `e1ef17ba04b21cf470a39ab077f076eedc06201057ba1fe4aef9dafb31408ba7` |
 | `andy` | 2 | `https://viridis-gti.github.io/viridis-avatar-assets/andy/v2/andy-v2.tar.gz` | `769c79dfe113f315ee9f9936f49b12b6ec127078e84917d8ce7592821a3040a9` |
 | `mia` | 2 | `https://viridis-gti.github.io/viridis-avatar-assets/mia/v2/mia-v2.tar.gz` | `d23c1cc3e017746f4591a8945bd5403f131e62608083d4d5cca5fb2b7d0b8942` |
