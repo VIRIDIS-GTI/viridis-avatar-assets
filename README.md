@@ -8,11 +8,11 @@ vollständig austauschbar, ohne den Renderer zu ändern.
 
 | Satz | Gender | Version | Öffentliche Bundle-URL | SHA-256 |
 |---|---|---:|---|---|
-| `andy` | `male` | 2 | `https://viridis-gti.github.io/viridis-avatar-assets/andy/v2/andy-v2.tar.gz` | `b32d590387bc41074813f4fde13f3900acdc9af2c15ded4ff1d4900237931cef` |
-| `hani` | `female` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/hani/v1/hani-v1.tar.gz` | `c340422b7d2047e618aae078eb8c584378550aae57d51bc9705e98fd6c6060ef` |
-| `mia` | `female` | 2 | `https://viridis-gti.github.io/viridis-avatar-assets/mia/v2/mia-v2.tar.gz` | `b239f2d57a2b617122dfbc4a5a5d2e371e31da4bc1900f2124290c12c3a4b73a` |
-| `neo` | `male` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/neo/v1/neo-v1.tar.gz` | `265bd16e6abade76479027dae45eb16809f29cf0c98b3953c459403a99c1362a` |
-| `otto` | `male` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/otto/v1/otto-v1.tar.gz` | `7cdfcdb8607fe90eceb6639fd9085e6e14796d7c19e290fc144ebe6037b6f843` |
+| `andy` | `male` | 2 | `https://viridis-gti.github.io/viridis-avatar-assets/andy/v2/andy-v2.tar.gz` | `408abd5ad9d10a67a7a3922825f6338c36b6d4be4e63b5ecab1362cb9e743491` |
+| `hani` | `female` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/hani/v1/hani-v1.tar.gz` | `581d2a7df242c3c7fe5cd49d9fd4d0ce278d61852f13bdc8a2931be6a71cf9de` |
+| `mia` | `female` | 2 | `https://viridis-gti.github.io/viridis-avatar-assets/mia/v2/mia-v2.tar.gz` | `f652cae2c1a18b0693cbfa8becb050b5374b81b3f8437726f21c3ab669cba73b` |
+| `neo` | `male` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/neo/v1/neo-v1.tar.gz` | `4eb2ac2d4c1873712c784815a6ba0801426611beec02d1192d452e338afec1c8` |
+| `otto` | `male` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/otto/v1/otto-v1.tar.gz` | `6e32ab48f3d2f2c6d0ab4128a589f13e4132d0d64d098025a0d33d8a3fdc8cd6` |
 
 Die URLs sind live; GitHub Pages ist für dieses Repository aktiv (Quelle: GitHub
 Actions). Neben jedem Archiv liegt `<bundle>.sha256`, dazu ein Gesamtindex:
