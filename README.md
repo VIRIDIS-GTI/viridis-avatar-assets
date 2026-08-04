@@ -6,16 +6,22 @@ vollständig austauschbar, ohne den Renderer zu ändern.
 
 ## Sätze und Versionen
 
-| Satz | Version | Öffentlicher Bundle-Pfad nach aktiviertem Pages-Deploy |
-|---|---:|---|
-| `neo` | 1 | `https://VIRIDIS-GTI.github.io/viridis-avatar-assets/neo/v1/neo-v1.tar.gz` |
-| `andy` | 2 | `https://VIRIDIS-GTI.github.io/viridis-avatar-assets/andy/v2/andy-v2.tar.gz` |
-| `mia` | 2 | `https://VIRIDIS-GTI.github.io/viridis-avatar-assets/mia/v2/mia-v2.tar.gz` |
-| `otto` | 1 | `https://VIRIDIS-GTI.github.io/viridis-avatar-assets/otto/v1/otto-v1.tar.gz` |
+| Satz | Version | Öffentliche Bundle-URL | SHA-256 |
+|---|---:|---|---|
+| `neo` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/neo/v1/neo-v1.tar.gz` | `e1ef17ba04b21cf470a39ab077f076eedc06201057ba1fe4aef9dafb31408ba7` |
+| `andy` | 2 | `https://viridis-gti.github.io/viridis-avatar-assets/andy/v2/andy-v2.tar.gz` | `769c79dfe113f315ee9f9936f49b12b6ec127078e84917d8ce7592821a3040a9` |
+| `mia` | 2 | `https://viridis-gti.github.io/viridis-avatar-assets/mia/v2/mia-v2.tar.gz` | `d23c1cc3e017746f4591a8945bd5403f131e62608083d4d5cca5fb2b7d0b8942` |
+| `otto` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/otto/v1/otto-v1.tar.gz` | `99c174ba141150fa4d86754217c75947176b4d8d99c999942a0e496165362f87` |
 
-Die URLs sind der feste Vertragsname der GitHub-Pages-Veröffentlichung. Sie werden
-erst erreichbar, wenn GitHub Pages für dieses Repository aktiviert ist. Neben jedem
-Archiv veröffentlicht die Action eine Datei `<bundle>.sha256` sowie `index.json`.
+Die URLs sind live; GitHub Pages ist für dieses Repository aktiv (Quelle: GitHub
+Actions). Neben jedem Archiv liegt `<bundle>.sha256`, dazu ein Gesamtindex:
+
+```sh
+curl -sS https://viridis-gti.github.io/viridis-avatar-assets/index.json
+```
+
+Die Prüfsummen oben stammen aus diesem Index und sind identisch mit einem lokalen
+`scripts/build_bundles.py`-Lauf — der Build ist bit-reproduzierbar.
 
 **Versionskonvention:** `manifest.version` ist eine positive Ganzzahl je Satz. Eine
 Änderung an gerenderten Ebenen oder Manifest-Verweisen erhöht sie. Der Pfad enthält
@@ -49,10 +55,16 @@ Der Lauf validiert Manifest, alle Pflichtlayer und Manifest-Verweise. Er erzeugt
 Satz ein gzip-komprimiertes TAR inklusive SHA-256 und einen Pages-Index unter
 `dist/pages/`. Für einen Einzeltest: `--avatar mia`.
 
+Gzip-Zeitstempel und TAR-Metadaten sind festgeschrieben, darum ergibt derselbe Stand
+bitgleiche Archive. Ein lokaler Lauf muss dieselben Prüfsummen liefern wie die
+Tabelle oben; weicht eine ab, hat sich der Satzinhalt geändert und die Version gehört
+erhöht.
+
 Die GitHub Action `.github/workflows/deploy-pages.yml` führt exakt diesen Befehl bei
 Push nach `main` aus, lädt das Ergebnis als Pages-Artefakt hoch und deployt es nach
 GitHub Pages. Sie benötigt die Standardberechtigungen `pages: write` und `id-token:
-write`; keine Registry- oder privaten Deploy-Schlüssel.
+write`; keine Registry- oder privaten Deploy-Schlüssel. Ein Lauf lässt sich ohne
+Commit über `workflow_dispatch` auslösen.
 
 ## Verwendung im Container
 
@@ -64,14 +76,28 @@ Archiv-Pfadprüfung und Manifest-Validierung. Beispiel:
 - name: AVATAR_ASSETS_DIR
   value: /home/node/.openclaw/avatar/mia
 - name: AVATAR_BUNDLE_URL
-  value: https://VIRIDIS-GTI.github.io/viridis-avatar-assets/mia/v2/mia-v2.tar.gz
+  value: https://viridis-gti.github.io/viridis-avatar-assets/mia/v2/mia-v2.tar.gz
 - name: AVATAR_BUNDLE_SHA256
-  value: <Wert aus mia-v2.tar.gz.sha256>
+  value: d23c1cc3e017746f4591a8945bd5403f131e62608083d4d5cca5fb2b7d0b8942
 ```
 
 Ohne `AVATAR_BUNDLE_URL` bleibt der bestehende InitContainer-/Git-Mechanismus
 unverändert. Infrastruktur-Manifeste sollen künftig nur diese drei Werte je Bot
 konfigurieren, nicht mehr Repo-Klone oder avatar-spezifische InitContainer enthalten.
+
+Verhalten des Startpfads, jeder Fall gegen die obigen URLs getestet:
+
+| Situation | Ergebnis |
+|---|---|
+| Satz liegt schon (`manifest.json` vorhanden) | kein Netzzugriff, Start läuft weiter |
+| Erfolg | atomar installiert, Temp-Verzeichnis entfernt |
+| Prüfsumme falsch | Abbruch 65, Ziel bleibt unangetastet |
+| Download/TLS/404 fehlgeschlagen | Abbruch 66 |
+| `AVATAR_BUNDLE_URL` nicht `https://` oder `AVATAR_ASSETS_DIR` fehlt | Abbruch 64 |
+| Archiv mit absolutem Pfad oder `..` | Abbruch 65 |
+
+`AVATAR_BUNDLE_SHA256` ist optional, aber empfohlen: nur damit ist ein untergeschobenes
+Archiv ausgeschlossen.
 
 ## Avatar erzeugen oder ändern
 
