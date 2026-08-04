@@ -27,7 +27,10 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def validate(avatar: Path) -> tuple[str, int]:
+GENDERS = {"female", "male"}
+
+
+def validate(avatar: Path) -> tuple[str, int, str]:
     manifest_path = avatar / "manifest.json"
     try:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -37,6 +40,9 @@ def validate(avatar: Path) -> tuple[str, int]:
     version = manifest.get("version")
     if name != avatar.name or not isinstance(version, int) or version < 1:
         raise ValueError(f"{avatar}: manifest.name muss '{avatar.name}' und version eine positive Ganzzahl sein")
+    gender = manifest.get("gender")
+    if gender not in GENDERS:
+        raise ValueError(f"{avatar}: manifest.gender muss eines von {sorted(GENDERS)} sein, ist {gender!r}")
     missing = sorted(name for name in REQUIRED if not (avatar / name).is_file())
     if missing:
         raise ValueError(f"{avatar}: fehlende Pflichtdateien: {', '.join(missing)}")
@@ -48,7 +54,7 @@ def validate(avatar: Path) -> tuple[str, int]:
     dangling = sorted({ref for ref in references if ref and not (avatar / ref).is_file()})
     if dangling:
         raise ValueError(f"{avatar}: Manifest referenziert fehlende Dateien: {', '.join(dangling)}")
-    return name, version
+    return name, version, gender
 
 
 def bundle(avatar: Path, output: Path) -> None:
@@ -100,16 +106,16 @@ def main() -> None:
         shutil.rmtree(pages)
     entries = []
     for avatar in avatars:
-        name, version = validate(avatar)
+        name, version, gender = validate(avatar)
         relative = Path(name) / f"v{version}" / f"{name}-v{version}.tar.gz"
         target = pages / relative
         bundle(avatar, target)
         digest = sha256(target)
         (target.parent / f"{target.name}.sha256").write_text(f"{digest}  {target.name}\n", encoding="utf-8")
-        entries.append({"name": name, "version": version, "url": str(relative), "sha256": digest})
-        print(f"OK {name} v{version}: {target} ({digest})")
+        entries.append({"name": name, "version": version, "gender": gender, "url": str(relative), "sha256": digest})
+        print(f"OK {name} v{version} ({gender}): {target} ({digest})")
     (pages / "index.json").write_text(json.dumps({"avatars": entries}, indent=2) + "\n", encoding="utf-8")
-    links = "\n".join(f'<li><a href="{entry["url"]}">{entry["name"]} v{entry["version"]}</a></li>' for entry in entries)
+    links = "\n".join(f'<li><a href="{entry["url"]}">{entry["name"]} v{entry["version"]}</a> — {entry["gender"]}</li>' for entry in entries)
     (pages / "index.html").write_text(f"<!doctype html><meta charset=utf-8><title>VIRIDIS Avatar Bundles</title><h1>VIRIDIS Avatar Bundles</h1><ul>{links}</ul>\n", encoding="utf-8")
 
 if __name__ == "__main__":

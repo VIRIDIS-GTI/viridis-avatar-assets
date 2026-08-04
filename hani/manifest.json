@@ -192,5 +192,6 @@
   "source": {
     "name": "hani",
     "portrait": "hani/portrait.png"
-  }
+  },
+  "gender": "female"
 }

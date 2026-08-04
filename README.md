@@ -29,6 +29,18 @@ Die Prüfsummen oben stammen aus diesem Index und sind identisch mit einem lokal
 `avatars[].gender`; der Builder lehnt Sätze ohne gültigen Wert ab. Aktuell sind
 `mia` und `hani` `female`, `andy`, `neo` und `otto` `male`.
 
+**Gender-Feld:** Jeder Satz enthält in `manifest.json` das maschinenlesbare Feld
+`gender` mit `female` oder `male`. Der Pages-Index übernimmt es unverändert als
+`avatars[].gender`; der Builder lehnt Sätze ohne gültigen Wert ab. Aktuell sind
+`mia` und `hani` `female`, `andy`, `neo` und `otto` `male`.
+
+**Gender-Feld:** Jeder Satz enthält in `manifest.json` das maschinenlesbare Feld
+`gender` mit `female` oder `male`. Der Pages-Index übernimmt es unverändert als
+`avatars[].gender`; der Builder lehnt Sätze ohne gültigen Wert ab. Aktuell sind
+`mia` und `hani` `female`, `andy`, `neo` und `otto` `male`. Reine Metadaten wie
+`gender` sind keine gerenderte Ebene und erhöhen die Version nicht, ändern aber
+den Manifestinhalt und damit die Bundle-Prüfsumme.
+
 **Versionskonvention:** `manifest.version` ist eine positive Ganzzahl je Satz. Eine
 Änderung an gerenderten Ebenen oder Manifest-Verweisen erhöht sie. Der Pfad enthält
 immer exakt `v<manifest.version>`; ältere Versionen bleiben als Referenz URLs stabil.

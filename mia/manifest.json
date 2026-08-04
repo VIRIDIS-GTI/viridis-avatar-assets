@@ -192,5 +192,6 @@
   "source": {
     "name": "mia",
     "portrait": "/home/node/.openclaw/avatar/mia-src/mia-source.jpg"
-  }
+  },
+  "gender": "female"
 }

@@ -193,5 +193,6 @@
     "name": "andy",
     "portrait": "portrait.png",
     "reference": "Vorlage aus VIR-15 (Paperclip-Anhang)"
-  }
+  },
+  "gender": "male"
 }

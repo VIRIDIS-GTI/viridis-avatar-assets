@@ -192,5 +192,6 @@
   "source": {
     "name": "neo",
     "portrait": "/home/node/.openclaw/avatar/neo-portrait.png"
-  }
+  },
+  "gender": "male"
 }
