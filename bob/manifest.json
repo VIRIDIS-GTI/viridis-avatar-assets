@@ -1,6 +1,6 @@
 {
   "name": "bob",
-  "version": 1,
+  "version": 2,
   "created": "2026-07-31T16:08:06+00:00",
   "canvas": {
     "width": 1024,
@@ -24,7 +24,7 @@
     ],
     "mouth": [
       512,
-      674
+      707
     ],
     "head_center": [
       512,
@@ -37,69 +37,69 @@
         "file": "mouth_X.png",
         "offset": [
           350,
-          620
+          653
         ]
       },
       "A": {
         "file": "mouth_A.png",
         "offset": [
           350,
-          620
+          653
         ]
       },
       "B": {
         "file": "mouth_B.png",
         "offset": [
           350,
-          620
+          653
         ]
       },
       "C": {
         "file": "mouth_C.png",
         "offset": [
           350,
-          620
+          653
         ]
       },
       "D": {
         "file": "mouth_D.png",
         "offset": [
           350,
-          620
+          653
         ]
       },
       "E": {
         "file": "mouth_E.png",
         "offset": [
           350,
-          620
+          653
         ]
       },
       "F": {
         "file": "mouth_F.png",
         "offset": [
           350,
-          620
+          653
         ]
       },
       "G": {
         "file": "mouth_G.png",
         "offset": [
           350,
-          620
+          653
         ]
       },
       "H": {
         "file": "mouth_H.png",
         "offset": [
           350,
-          620
+          653
         ]
       }
     },
     "anchor": [
       512,
-      674
+      707
     ],
     "mode": "generative"
   },
