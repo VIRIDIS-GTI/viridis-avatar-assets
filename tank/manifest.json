@@ -1,6 +1,7 @@
 {
   "name": "tank",
   "version": 1,
+  "gender": "male",
   "created": "2026-08-07T14:10:00",
   "canvas": {
     "width": 1024,

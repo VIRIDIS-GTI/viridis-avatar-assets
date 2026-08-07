@@ -9,10 +9,11 @@ vollständig austauschbar, ohne den Renderer zu ändern.
 | Satz | Gender | Version | Öffentliche Bundle-URL | SHA-256 |
 |---|---|---:|---|---|
 | `andy` | `male` | 2 | `https://viridis-gti.github.io/viridis-avatar-assets/andy/v2/andy-v2.tar.gz` | `408abd5ad9d10a67a7a3922825f6338c36b6d4be4e63b5ecab1362cb9e743491` |
-| `bob` | `male` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/bob/v1/bob-v1.tar.gz` | `537c7c7beaff21053373bcfe49ee960bb62b03557495b9205cbc7fada0c5c50b` |
+| `bob` | `male` | 3 | `https://viridis-gti.github.io/viridis-avatar-assets/bob/v3/bob-v3.tar.gz` | `4800f148e3673ce0f93c263d421188eb20db92ea10f943b1a4e8009ec84a95a5` |
 | `hani` | `female` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/hani/v1/hani-v1.tar.gz` | `581d2a7df242c3c7fe5cd49d9fd4d0ce278d61852f13bdc8a2931be6a71cf9de` |
 | `mia` | `female` | 2 | `https://viridis-gti.github.io/viridis-avatar-assets/mia/v2/mia-v2.tar.gz` | `f652cae2c1a18b0693cbfa8becb050b5374b81b3f8437726f21c3ab669cba73b` |
 | `neo` | `male` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/neo/v1/neo-v1.tar.gz` | `4eb2ac2d4c1873712c784815a6ba0801426611beec02d1192d452e338afec1c8` |
+| `tank` | `male` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/tank/v1/tank-v1.tar.gz` | `f7082b48406a7d90c44e85f09d2fb46c040acb04690f6964f1ff1ce2f74d2162` |
 
 Die URLs sind live; GitHub Pages ist für dieses Repository aktiv (Quelle: GitHub
 Actions). Neben jedem Archiv liegt `<bundle>.sha256`, dazu ein Gesamtindex:
@@ -27,7 +28,7 @@ Die Prüfsummen oben stammen aus diesem Index und sind identisch mit einem lokal
 **Gender-Feld:** Jeder Satz enthält in `manifest.json` das maschinenlesbare Feld
 `gender` mit `female` oder `male`. Der Pages-Index übernimmt es unverändert als
 `avatars[].gender`; der Builder lehnt Sätze ohne gültigen Wert ab. Aktuell sind
-`mia` und `hani` `female`, `andy`, `neo` und `bob` `male`. Reine Metadaten wie
+`mia` und `hani` `female`, `andy`, `bob`, `neo` und `tank` `male`. Reine Metadaten wie
 `gender` sind keine gerenderte Ebene und erhöhen die Version nicht, ändern aber
 den Manifestinhalt und damit die Bundle-Prüfsumme.
 
@@ -133,6 +134,28 @@ Danach wird der fertige Satz hier committed; der Pages-Workflow validiert ihn un
 veröffentlicht das Bundle. Im Betrieb liegt der Renderer weiterhin unter
 `/home/node/.openclaw/avatar/avatar_engine.py` — ausgeliefert über die ConfigMap
 `openclaw-scripts`, deren Inhalt aus `tools/avatar_engine.py` stammt.
+
+### Pflichtcheck vor jedem neuen Avatar-Commit
+
+Ein Ordner im Repository ist noch kein veröffentlichter Avatar. Vor dem Commit
+müssen **alle** Punkte erfüllt sein; der lokale Bundle-Lauf ist verbindlich und
+kein optionaler Selbsttest:
+
+1. `manifest.json` enthält `name`, eine positive `version` und **`gender` mit
+   exakt `male` oder `female`**. Das Gender-Feld ist Pflichtmetadatum — fehlt es,
+   lehnt `scripts/build_bundles.py` den Satz ab, der Pages-Workflow deployt nichts
+   und der Media-Service kann den Avatar nicht katalogisieren.
+2. Alle Pflichtlayer, `profile_640.png` und die Kreisvorschau sind vorhanden;
+   jeder Manifest-Verweis zeigt auf eine vorhandene Datei.
+3. Die 252 Kombinationen aus 4 Lid-Zuständen, 7 Emotionen und 9 Visemen sowie
+   ein Testvideo wurden geprüft.
+4. **Vor dem Push:** `python3 scripts/build_bundles.py --avatar <name> --output /tmp/avatar-check`
+   muss erfolgreich sein. Erst dann den vollständigen Lauf über alle Sätze starten:
+   `python3 scripts/build_bundles.py --output /tmp/avatar-all-check`.
+5. Nach erfolgreichem GitHub-Pages-Lauf enthält der öffentliche `index.json` den
+   neuen Satz. Erst dann ist er über die Media-Service-API nutzbar. Die Root-Tabelle
+   „Sätze und Versionen" samt Bundle-URL und SHA-256 wird aus dem tatsächlichen
+   Builder-Ergebnis aktualisiert — niemals geschätzt.
 
 Vor einer Änderung alle 252 Kombinationen aus 4 Lid-Zuständen, 7 Emotionen und 9
 Visemen rendern und ein Testvideo erzeugen. Das Telegram-Profilbild und seine
