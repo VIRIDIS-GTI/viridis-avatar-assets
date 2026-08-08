@@ -13,7 +13,7 @@ vollständig austauschbar, ohne den Renderer zu ändern.
 | `hani` | `female` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/hani/v1/hani-v1.tar.gz` | `581d2a7df242c3c7fe5cd49d9fd4d0ce278d61852f13bdc8a2931be6a71cf9de` |
 | `mia` | `female` | 2 | `https://viridis-gti.github.io/viridis-avatar-assets/mia/v2/mia-v2.tar.gz` | `f652cae2c1a18b0693cbfa8becb050b5374b81b3f8437726f21c3ab669cba73b` |
 | `neo` | `male` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/neo/v1/neo-v1.tar.gz` | `4eb2ac2d4c1873712c784815a6ba0801426611beec02d1192d452e338afec1c8` |
-| `tank` | `male` | 1 | `https://viridis-gti.github.io/viridis-avatar-assets/tank/v1/tank-v1.tar.gz` | `f7082b48406a7d90c44e85f09d2fb46c040acb04690f6964f1ff1ce2f74d2162` |
+| `tank` | `male` | 2 | `https://viridis-gti.github.io/viridis-avatar-assets/tank/v2/tank-v2.tar.gz` | `b4420fb3a87b6e50ca1882d5f9f0670e2fe1fdc8eaaf81aeb5c85d5059d441ec` |
 
 Die URLs sind live; GitHub Pages ist für dieses Repository aktiv (Quelle: GitHub
 Actions). Neben jedem Archiv liegt `<bundle>.sha256`, dazu ein Gesamtindex:
